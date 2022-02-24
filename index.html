@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<!--MAIN HALL-->
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>VR Climate Change City</title>
+    <meta name="description" content="VR Climate Change City" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <link
+      rel="icon"
+      href="https://cdn.glitch.global/b4adbd04-68ad-4b83-8ff1-0cfe5e5c37ec/IMG_1454.ico?v=1641378031257"
+    />
+
+    <!--a-frame-->
+    <script src="https://aframe.io/releases/1.3.0/aframe.min.js"></script>
+
+    <!--flying-->
+    <script src="components.js"></script>
+
+    <!--particle system-->
+    <script src="particles.js"></script>
+
+    <!--maze-->
+    <script src="https://unpkg.com/aframe-maze-component@0.1.24/dist/aframe-maze-component.min.js"></script>
+
+    <!--new window openner-->
+    <script>
+      AFRAME.registerComponent("link-open", {
+        schema: {
+          href: { type: "string" },
+        },
+        init: function () {
+          this.el.addEventListener("click", (e) => {
+            window.open(this.data.href);
+          });
+        },
+      });
+    </script>
+
+    <script src="//cdn.rawgit.com/donmccurdy/aframe-extras/v3.13.1/dist/aframe-extras.min.js"></script>
+    <script src="https://unpkg.com/aframe-look-at-component@0.6.0/dist/aframe-look-at-component.min.js"></script>
+    <script src="https://unpkg.com/aframe-maze-component@0.1.24/dist/aframe-maze-component.min.js"></script>
+  </head>
+
+  <body>
+    <a-scene background="color: #60860A" foo>
+      <a-assets>
+        <!--3D objects-->
+        <a-asset-item
+          id="mausoleum.obj"
+          src="https://cdn.glitch.com/b4adbd04-68ad-4b83-8ff1-0cfe5e5c37ec%2Fmausoleum2.obj?v=1618951076138"
+        ></a-asset-item>
+        <a-asset-item
+          id="mausoleum.mtl"
+          src="https://cdn.glitch.com/b4adbd04-68ad-4b83-8ff1-0cfe5e5c37ec%2Fmausoleum2.mtl?v=1618951137124"
+        ></a-asset-item>
+        <a-asset-item
+          id="gri.gltf"
+          src="https://cdn.glitch.com/b4adbd04-68ad-4b83-8ff1-0cfe5e5c37ec%2FgITFversionofgri.glb?v=1621531559365"
+        ></a-asset-item>
+        <a-asset-item
+          id="mausoleum.gltf"
+          src="https://cdn.glitch.com/b4adbd04-68ad-4b83-8ff1-0cfe5e5c37ec%2Fmausoleum3.glb?v=1621877982926"
+        ></a-asset-item>
+
+        <!--images-->
+        <img
+          id="leafery"
+          src="https://cdn.glitch.me/b4adbd04-68ad-4b83-8ff1-0cfe5e5c37ec%2Fleafery.PNG?v=1636161234494"
+        />
+        <img
+          id="city sky"
+          src="https://cdn.glitch.global/d6343f26-8b77-4263-be0e-5017963e9124/photo-1611867010715-e6531fe870c6.jpg?v=1645672430034"
+        />
+        <img
+          id="linkr"
+          src="https://cdn.glitch.me/b4adbd04-68ad-4b83-8ff1-0cfe5e5c37ec%2FIMG_1454%20(1).PNG?v=1636147821372"
+        />
+        <img
+          id="red"
+          src="ttps://cdn.glitch.global/d6343f26-8b77-4263-be0e-5017963e9124/red-skies-at-night.jpg?v=1645672568615"
+        />
+        <img
+          id="pixel red sky"
+          src="https://cdn.glitch.global/d6343f26-8b77-4263-be0e-5017963e9124/pixel red sky.png?v=1645672787320"
+        />
+
+        <!--mixins-->
+        <a-mixin
+          id="artexts"
+          text="font: https://cdn.glitch.com/b4adbd04-68ad-4b83-8ff1-0cfe5e5c37ec%2Fgeorgia-msdf.json?v=1619718624537; 
+                       font-image: https://cdn.glitch.com/b4adbd04-68ad-4b83-8ff1-0cfe5e5c37ec%2Fgeorgia.png?v=1619718621024; 
+                       negate: false; 
+                       color: #FFFFFF; 
+                       width: 10; 
+                       lineHeight: 60; ssrc: #texture-wall"
+          depth="1"
+          width="4"
+          height="1"
+        >
+        </a-mixin>
+
+        <a-cylinder
+          id="end-cap"
+          static-body
+          color="#444444"
+          depth="1.1"
+          width="1.1"
+          height="2"
+          radius="0.5"
+        ></a-cylinder>
+      </a-assets>
+
+      <a-entity
+        id="maze1"
+        src="#city sky"
+        maze=size: 20 6 10;
+        wall: #wall-one; 
+        cap:#end-cap; 
+        open: S 0 N 1 2 4 E 5;
+        position="5 0.5 0" 
+        rotation="2 -20 0"
+      ></a-entity>
+      
+      <a-entity
+        id="maze2"
+        src="#city sky"
+        maze=size: 6 7 1;
+        wall: #wall-one; 
+        cap:#end-cap; 
+        open: S 0 N 1 2 4 E 5;
+        position="100 75 -2" 
+        rotation="6 -50 0"
+      ></a-entity>
+      
+      <a-entity
+        id="maze3"
+        src="#city sky"
+        maze=size: 6 7 1;
+        wall: #wall-one; 
+        cap:#end-cap; 
+        open: S 0 N 1 2 4 E 5;
+        position="-100 75 -6" 
+        rotation="6 -50 0"
+      ></a-entity>
+
+      <!--controls-->
+      <a-entity
+        id="avatar"
+        mixin="avatar-head"
+        camera
+        look-controls
+        wasdqz-controls="acceleration: 100"
+        firebase-broadcast="components: mixin, position, rotation"
+        position="0 3 17"
+      >
+        <a-cursor color="#CCCCCC"></a-cursor>
+      </a-entity>
+
+      <!--lighting-->
+      <a-light type="ambient" intensity="35"></a-light>
+
+      <!--ceiling-->
+      <a-image
+        src="#pixel red sky"
+        alpha-test
+        position="0 300 -70"
+        rotation="90 0 0"
+        scale="8064 6048"
+      ></a-image>
+
+      <a-entity
+        position="0 40 -45"
+        particle-system="preset: dust; color: #EF0000,#44CC00; enabled: true"
+      ></a-entity>
+
+      <!--rain-->
+      <a-entity
+        position="0 100 -90"
+        particle-system="preset: rain; color: #0726A6,#1946A6; enabled: true"
+      ></a-entity>
+      <a-entity
+        position="0 100 0"
+        particle-system="preset: rain; color: #0726A6, #1946A6; enabled: true"
+      ></a-entity>
+
+      <!--sound-->
+      <a-sound
+        src="https://cdn.glitch.com/b4adbd04-68ad-4b83-8ff1-0cfe5e5c37ec%2FRolling%20Thunder%20%26%20Heavy%20Rain%205%20Minutes%20-%20Sounds%20of%20Nature%20(64%20kbps).mp3?v=1627990696427; on: click"
+        autoplay="true"
+        position="0 0 -45"
+        volume="50"
+        loop="true"
+        rollofffactor="0.74"
+      >
+      </a-sound>
+
+      <!--3D objects-->
+      <a-obj-model
+        src="#mausoleum.obj"
+        mtl="#mausoleum.mtl"
+        position="0 0 -25"
+        rotation="0 270 0"
+      ></a-obj-model>
+      <a-entity
+        gltf-model="#gri.gltf"
+        scale="15 15 15"
+        position="5.8 36.5 -68.8"
+        rotation="-28 -22 -127"
+      ></a-entity>
+      <a-cylinder
+        position="30 -1 -120.5"
+        height="0.5"
+        radius="5.5"
+        color="#808080"
+      ></a-cylinder>
+      <a-entity
+        gltf-model="#gri.gltf"
+        scale="15 15 15"
+        position="-6 36.5 -172"
+        rotation="-28 -202 -127"
+      ></a-entity>
+      <a-cylinder
+        position="-30 -1 -120.5"
+        height="0.5"
+        radius="5.5"
+        color="#808080"
+      ></a-cylinder>
+
+      <!--control instructions--
+      <a-entity mixin="artexts" position="-6 8 8" text="value: CONTROLS (laptop): \n
+                                                       W: move forwards
+                                                       S: move backwards
+                                                       A: move left
+                                                       D: move right
+                                                       Q: move up
+                                                       Z: move down
+                                                       F: fill screen
+                                                       Trackpad or Mouse: look around
+                                                       Click on links like this: \n
+                                                       
+                                                       By aiming the ring at the 
+                                                       centre of your screen on it 
+                                                        
+                                                      (N.B. the colourful orbs act as 
+                                                        portals when clicked on);
+                                                       align: left"></a-entity>
+      <a-image src="#linkr" alpha-test position="-9 1.95 8"></a-image>
+      -->
+    </a-scene>
+  </body>
+</html>
